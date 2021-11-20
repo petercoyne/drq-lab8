@@ -22,19 +22,19 @@ export class Edit extends Component { // component for export
 	}
 
 	componentDidMount() { // fires when component is mounted
-		console.log(this.props.match.params.id);
+		console.log(this.props.match.params.id); //
 
-		axios.get(`http://localhost:4000/api/movies/${this.props.match.params.id}`)
+		axios.get(`http://localhost:4000/api/movies/${this.props.match.params.id}`) // get individual movie from movies endpoint
 		.then(res => {
-			console.log(res.data.title);
-			this.setState({
+			console.log(res.data.title); // log the title
+			this.setState({ // set the state of th ecomponent to the response from the endpoint
 				_id:res.data._id,
 				Title:res.data.title,
 				Year:res.data.year,
 				Poster:res.data.poster
 			})
 		})
-		.catch(err => console.log(err))
+		.catch(err => console.log(err)) // log error if it fails
 	}
 
 	// onSubmit function

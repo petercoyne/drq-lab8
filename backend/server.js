@@ -47,14 +47,14 @@ app.get('/api/movies/:id', (req,res) => { // route with dynamic :id parameter
 	})
 })
 
-app.put('/api/movies/:id', (req, res) => {
-	console.log(`Update movie: ` + req.params.id);
-	console.log(req.body);
+app.put('/api/movies/:id', (req, res) => { // route for updating movie
+	console.log(`Update movie: ` + req.params.id); // log movie id
+	console.log(req.body); // log movie to be updated
 
-	MovieModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+	MovieModel.findByIdAndUpdate(req.params.id, req.body, {new:true}, // find by id, replace with req.body
 		(err, data) => {
-			console.log(data);
-			res.send(data);
+			console.log(data); // log the movie coming back
+			res.send(data); // send the raw data back to the client
 		}
 	)
 })
@@ -64,7 +64,7 @@ app.post('/api/movies', (req, res) => { // route for POST on /api/movies
 	console.log(req.body.Title); // log the various name/value pairs to console
 	console.log(req.body.Year);
 	console.log(req.body.Poster);
-	MovieModel.create({ 
+	MovieModel.create({ // create movie object in the database model
 		title:req.body.Title,
 		year:req.body.Year,
 		poster:req.body.Poster
